@@ -6,4 +6,4 @@ This extension is not tested... like, at all. Please use at your own risk, and r
 
 Contributions are very appreciated! Do submit issues and pull requests.
 
-<img src=https://cdn.discordapp.com/attachments/510776441084968977/1277666288604413963/IMG_20240826_180340_619.jpg?ex=66cdfef5&is=66ccad75&hm=717f99069b76a0374b81ae92626b1056fc5d333fc81479207c5f2b4ed85da102&" alt="Screenshot 1"/>
+![Screenshot 1](https://cdn.discordapp.com/attachments/510776441084968977/1277666288604413963/IMG_20240826_180340_619.jpg?ex=66cdfef5&is=66ccad75&hm=717f99069b76a0374b81ae92626b1056fc5d333fc81479207c5f2b4ed85da102&)
