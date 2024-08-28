@@ -1,1 +1,0 @@
-document.getElementById("the").src = chrome.runtime.getURL("assets/media/nux01.jpg");
