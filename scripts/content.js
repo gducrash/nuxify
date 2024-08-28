@@ -89,28 +89,7 @@ function nuxifyString (oldTitle) {
 
 function nuxifyStringSpanish (str) {
     const newTitle = str
-    /* Extra-Bonus: Spanish support
-        Para un completo soporte tomen de ejemplo la carpeta /spanishVerbs
-        para todos aquellos que quieran modificar uno por uno los verbos.
-        Esto porque, por ejemplo, las palabras singulares que terminen
-        en "-ué" se puede simplificar casi todas a "amos" (Pagué/Pagamos,
-        Entregué/Entregamos, Jugué/Jugamos). Pero terminaciones como "-eo"
-        Hay muchas palabras que no siguen una regla para simplificarlo
-        (Paseo/Paseamos, Creo/Creemos, Veo/Vemos, etc.)
-        Por ahora solo modificare los sujetos, quien se quiera aventar el resto
-        mucha suerte XD
-        -- [To English:] --
-        For a complete support take as example the /spanishVerbs folder
-        folder for all those who want to modify verbs one by one.
-        This is because, for example, singular words ending in “-ué” can almost all be simplified to “amos” (Pagué Pagué).
-        in “-ué” can almost all be simplified to “amos” (Pagué/Pagamos,
-        Entregué/Entregamos, Jugué/Juguamos). But endings like “-eo”
-        There are many words that do not follow a rule to simplify it
-        (Paseo/Paseamos, Creo/Creemos, Veo/Vemos, etc.).
-        For now I'll only modify the subjects, whoever wants to do the rest will be welcome.
-        best of luck XD
-        DO NOT INCLUDE THE FOLDER FOR PRODUCTION! Only for contributions for the Spanish language.
-        */
+    /* Extra-Bonus: Spanish support  */
 
        .replace(/\bFUI TU\b/g, 'FUIMOS')
        .replace(/\bFui Tu\b/g, 'Fuimos')
