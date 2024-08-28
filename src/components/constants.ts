@@ -17,7 +17,7 @@ export const DICTIONARY: DictionaryMap = {
     es: {
         languageName: 'Spanish',
         languageNameLocalized: 'Español',
-        contributors: [ 'Zonwar1' ],
+        contributors: [ 'Herobrot' ],
         nuxify: dictionary_es,
     },
     uk: {
