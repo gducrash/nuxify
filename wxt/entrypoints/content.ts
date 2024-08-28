@@ -1,8 +1,8 @@
-import { initNuxify } from "@/components/nux";
+import { setupObservers } from "@/components/dom";
 
 export default defineContentScript({
     matches: ['*://*.youtube.com/*'],
     main() {
-        initNuxify();
+        setupObservers();
     },
 });
