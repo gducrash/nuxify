@@ -78,6 +78,7 @@ function nuxifyString (oldTitle) {
         .replace(/(^|\s)Мені(?=\s|$)/g, 'Нам')
         .replace(/(^|\s)мені(?=\s|$)/gi, 'нам');
 
+
     return {
         newTitle,
         isDifferent: newTitle != oldTitle,
@@ -86,11 +87,187 @@ function nuxifyString (oldTitle) {
 
 }
 
+function nuxifyStringSpanish (str) {
+    const newTitle = str
+    /* Extra-Bonus: Spanish support
+        Para un completo soporte tomen de ejemplo la carpeta /spanishVerbs
+        para todos aquellos que quieran modificar uno por uno los verbos.
+        Esto porque, por ejemplo, las palabras singulares que terminen
+        en "-ué" se puede simplificar casi todas a "amos" (Pagué/Pagamos,
+        Entregué/Entregamos, Jugué/Jugamos). Pero terminaciones como "-eo"
+        Hay muchas palabras que no siguen una regla para simplificarlo
+        (Paseo/Paseamos, Creo/Creemos, Veo/Vemos, etc.)
+        Por ahora solo modificare los sujetos, quien se quiera aventar el resto
+        mucha suerte XD
+        -- [To English:] --
+        For a complete support take as example the /spanishVerbs folder
+        folder for all those who want to modify verbs one by one.
+        This is because, for example, singular words ending in “-ué” can almost all be simplified to “amos” (Pagué Pagué).
+        in “-ué” can almost all be simplified to “amos” (Pagué/Pagamos,
+        Entregué/Entregamos, Jugué/Juguamos). But endings like “-eo”
+        There are many words that do not follow a rule to simplify it
+        (Paseo/Paseamos, Creo/Creemos, Veo/Vemos, etc.).
+        For now I'll only modify the subjects, whoever wants to do the rest will be welcome.
+        best of luck XD
+        DO NOT INCLUDE THE FOLDER FOR PRODUCTION! Only for contributions for the Spanish language.
+        */
+
+       .replace(/\bFUI TU\b/g, 'FUIMOS')
+       .replace(/\bFui Tu\b/g, 'Fuimos')
+       .replace(/\bfui tu\b/gi, 'fuimos')
+
+       .replace(/\bME ARREPIENTO\b/g, 'NOS ARREPENTIMOS')
+       .replace(/\bMe Arrepiento\b/g, 'Nos Arrepentimos')
+       .replace(/\bme arrepiento\b/gi, 'nos arrepentimos')
+
+       .replace(/\bME HARTÉ\b/g, 'NOS HARTAMOS')
+       .replace(/\bMe Harto\b/g, 'Nos Harto')
+       .replace(/\bme harto\b/gi, 'nos harto')
+
+       .replace(/\bYO NO SOY\b/g, 'NOSOTROS NO SOMOS')
+       .replace(/\bYo No Soy\b/g, 'Nosotros No Somos')
+       .replace(/\byo no soy\b/gi, 'nosotros no somos')
+
+       .replace(/\bNO SOY\b/g, 'NO SOMOS')
+       .replace(/\bNo Soy\b/g, 'No Somos')
+       .replace(/\bno soy\b/gi, 'no somos')
+
+       .replace(/\bYO ME\b/g, 'NOS')
+       .replace(/\bYo Me\b/g, 'Nos')
+       .replace(/\byo me\b/gi, 'nos')
+
+    
+       .replace(/\bYO FUERA\b/g, 'NOSOTROS FUERAMOS')
+       .replace(/\bYo Fuera\b/g, 'Nosotros Fueramos')
+       .replace(/\byo fuera\b/gi, 'nosotros fueramos')
+
+       .replace(/\bME QUEDE\b/g, 'NOS QUEDAMOS')
+       .replace(/\bME QUEDÉ\b/g, 'Nos Quedamos')
+       .replace(/\bMe Quede\b/g, 'Nos Quedamos')
+       .replace(/\bMe Quedé\b/g, 'nos quedamos')
+       .replace(/\bme quede\b/gi, 'nos quedamos')
+       .replace(/\bme quedé\b/gi, 'nos quedamos')
+
+       .replace(/\bME VOY\b/g, 'NOS VAMOS')
+       .replace(/\bMe Voy\b/g, 'Nos Vamos')
+       .replace(/\bme voy\b/gi, 'nos vamos')
+
+       .replace(/\bYO ERA\b/g, 'FUIMOS')
+       .replace(/\bYo Era\b/g, 'Fuimos')
+       .replace(/\byo era\b/gi, 'fuimos')
+
+        .replace(/\bYO\b/g, 'NOSOTROS')
+        .replace(/\bYo\b/g, 'Nosotros')
+        .replace(/\byo\b/gi, 'nosotros')
+
+        .replace(/\bMI\b/g, 'NUESTR@')
+        .replace(/\bMi\b/g, 'Nuestr@')
+        .replace(/\bmi\b/gi, 'nuestr@')
+
+        .replace(/\bME\b/g, 'NOS')
+        .replace(/\bMe\b/g, 'Nos')
+        .replace(/\bme\b/g, 'nos')
+
+        .replace(/\bMETÍ\b/g, 'METIMOS')
+        .replace(/\bMetí\b/g, 'Metimos')
+        .replace(/\bmetí\b/gi, 'metimos')
+
+        .replace(/\bSOY\b/g, 'SOMOS')
+        .replace(/\bSoy\b/g, 'Somos')
+        .replace(/\bsoy\b/gi, 'somos')
+
+        //Remplaza todas las terminaciones "ué" por "amos" que precedan con cualquier palabra/digito
+        .replace(/\b\w{5,}UÉ/g, function(match){
+            console.log("ENTRE BRO")
+            console.log(match)
+            console.log(match.slice(0, -2) + 'AMOS')
+            return match.slice(0, -2) + 'AMOS';
+        })
+        .replace(/\b\w{5,}ué/gi, function(match){
+            console.log("entre bro")
+            console.log(match)
+            console.log(match.slice(0, -2) + 'amos')
+            return match.slice(0, -2) + 'amos';
+        })
+
+        .replace(/\bHE\b/g, 'HEMOS')
+        .replace(/\bHe\b/g, 'Hemos')
+        .replace(/\bhe\b/gi, 'hemos')
+
+        .replace(/\bTUVE\b/g, 'TUVIMOS')
+        .replace(/\bTuve\b/g, 'Tuvimos')
+        .replace(/\btuve\b/gi, 'tuvimos')
+
+        .replace(/\bHICE\b/g, 'HICIMOS')
+        .replace(/\bHice\b/g, 'Hicimos')
+        .replace(/\bhice\b/gi, 'hicimos')
+
+        .replace(/\bREACCIONO\b/g, 'REACCIONAMOS')
+        .replace(/\bReacciono\b/g, 'Reaccionamos')
+        .replace(/\breacciono\b/gi, 'reaccionamos')
+
+        .replace(/\bDESCUBRI\b/g, 'DESCUBRIMOS')
+        .replace(/\bDescubri\b/g, 'Descubrimos')
+        .replace(/\bdescubri\b/gi, 'descubrimos')
+        .replace(/\bDESCUBRÍ\b/g, 'DESCUBRIMOS')
+        .replace(/\bDescubrí\b/g, 'Descubrimos')
+        .replace(/\bdescubrí\b/gi, 'descubrimos')
+
+        .replace(/\bSOBREVIVO\b/g, 'SOBREVIVIMOS')
+        .replace(/\bSobrevivo\b/g, 'Sobrevivimos')
+        .replace(/\bsobrevivo\b/gi, 'sobrevivimos')
+        .replace(/\bSOBREVIVI\b/g, 'SOBREVIVIMOS')
+        .replace(/\bSobrevivi\b/g, 'Sobrevivimos')
+        .replace(/\bsobrevivi\b/gi, 'sobrevivimos')
+        .replace(/\bSOBREVIVÍ\b/g, 'SOBREVIVIMOS')
+        .replace(/\bSobreviví\b/g, 'Sobrevivimos')
+        .replace(/\bsobreviví\b/gi, 'sobrevivimos')
+
+        .replace(/\bDESBLOQUEO\b/g, 'DESBLOQUEAMOS')
+        .replace(/\bDesbloqueo\b/g, 'Desbloqueamos')
+        .replace(/\bdesbloqueo\b/gi, 'desbloqueamos')
+
+        .replace(/\bRIO\b/g, 'REIMOS')
+        .replace(/\bRio\b/g, 'Reimos')
+        .replace(/\brio\b/gi, 'reimos')
+
+        //Parody of famous name-youtubers within his name on his own video
+        .replace(/\bDROSS\b/g, 'NUXTAKU')
+        .replace(/\bDross\b/g, 'Nuxtaku')
+        .replace(/\bdross\b/gi, 'nuxtaku')
+        .replace(/\bDROSSROTZANK\b/g, 'NUXTAKU')
+        .replace(/\bDrossRotzank\b/g, 'Nuxtaku')
+        .replace(/\bdrossrotzank\b/gi, 'nuxtaku')
+
+        .replace(/\bSR.PELO\b/g, 'NUXTAKU')
+        .replace(/\bSr.Pelo\b/g, 'Nuxtaku')
+        .replace(/\bsr.pelo\b/gi, 'Nuxtaku')
+        .replace(/\bPELO\b/g, 'NUXTAKU')
+        .replace(/\bPelo\b/g, 'Nuxtaku')
+        .replace(/\bpelo\b/gi, 'Nuxtaku')
+
+        .replace(/\bDALAS\b/g, 'NUXTAKU')
+        .replace(/\bDalas\b/g, 'Nuxtaku')
+        .replace(/\bdalas\b/gi, 'nuxtaku')
+
+        .replace(/\bFERNANFLOO\b/g, 'NUXTAKU')
+        .replace(/\bFernanfloo\b/g, 'Nuxtaku')
+        .replace(/\bfernanfloo\b/gi, 'nuxtaku')
+    return {
+        newTitle,
+        isDifferent: newTitle != str,
+        seed: getStringSeed(newTitle, 5),
+    };
+}
+
 function replaceVideo (titleElem, thumbnailElem) {
 	// replace video card title
-    const { newTitle, isDifferent, seed } = nuxifyString(titleElem.innerText);
+    const isSpanish = document.documentElement.lang.startsWith('es');
+    //if the html tag, lang is es. Use the Spanish nuxify function for better compatibility
+    //if not, use for default the nuxify function
+    //Expect not working good for english videos if spanish user
+    const { newTitle, isDifferent, seed } = isSpanish ? nuxifyStringSpanish(titleElem.innerText) : nuxifyString(titleElem.innerText);
     if (!isDifferent) return;
-
     titleElem.childNodes[0].data = newTitle;
     titleElem.title = newTitle;
 
