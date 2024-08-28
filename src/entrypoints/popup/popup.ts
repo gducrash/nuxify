@@ -1,4 +1,4 @@
-import mediaNuxPic from '~/assets/media/nux01.jpg';
+import mediaNuxPic from '~/public/media/nux01.jpg';
 
 import { getSettingsItem, updateSettings } from '@/components/util';
 import { DICTIONARY } from '@/components/constants';

@@ -1,20 +1,7 @@
-import thumbnailPath0 from '~/assets/media/thumb0.png';
-import thumbnailPath1 from '~/assets/media/thumb1.png';
-import thumbnailPath2 from '~/assets/media/thumb2.png';
-import thumbnailPath3 from '~/assets/media/thumb3.png';
-import thumbnailPath4 from '~/assets/media/thumb4.png';
-
 import { nuxifyString } from './nuxify';
 import { onElement } from './util';
 import type { ExtensionSettings } from './types';
-
-const thumbnailPaths = [
-    thumbnailPath0,
-    thumbnailPath1,
-    thumbnailPath2,
-    thumbnailPath3,
-    thumbnailPath4,
-];
+import type { PublicPath } from 'wxt/browser';
 
 function replaceVideo (titleElem: HTMLSpanElement, thumbnailElem?: Element|null, language?: Language) {
     // replace video card title
@@ -29,7 +16,7 @@ function replaceVideo (titleElem: HTMLSpanElement, thumbnailElem?: Element|null,
         const ytImageElem = thumbnailElem.querySelector('yt-image');
         if (ytImageElem) {
             const nuxImg = document.createElement('img');
-            nuxImg.src = thumbnailPaths[seed];
+            nuxImg.src = browser.runtime.getURL(`media/thumb${seed}.png` as PublicPath);
             nuxImg.style.position = 'absolute';
             nuxImg.className = 'nuxthumb';
             nuxImg.style.left = '0';

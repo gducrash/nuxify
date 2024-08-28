@@ -17,5 +17,15 @@ export default defineConfig({
         permissions: [
             'storage'
         ],
+        web_accessible_resources: [
+            {
+                "matches": [
+                    "*://*.youtube.com/*"
+                ],
+                "resources": [
+                    "media/*"
+                ]
+            },
+        ],
     },
 });
