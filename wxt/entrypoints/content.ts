@@ -1,8 +1,12 @@
-import { setupObservers } from "@/components/dom";
+import { initNuxify } from "@/components/dom";
+import { getSettings } from "@/components/util";
 
 export default defineContentScript({
     matches: ['*://*.youtube.com/*'],
     main() {
-        setupObservers();
+        (async() => {
+            const settings = await getSettings();
+            initNuxify(settings);
+        })();
     },
 });

@@ -7,38 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img id="the" src="~/assets/media/nux01.jpg" width="500" height="100" />
-    <div class="settings">
+    <a href="https://github.com/gducrash/nuxify" target="_blank" rel="noopener noreferrer">
+        <img id="the" src="~/assets/media/nux01.jpg" width="400" height="100" />
+    </a>
 
-        <h2>Settings</h2>
+    <div class="page">
+        <h1>Nuxify</h1>
 
-        <div class="settings-item">
-            <h3>Language</h3>
-            <p>Select the language for the video title replacement</p>
+        <div class="settings">
 
-            <div>
-                <input type="radio" name="settings_lang" value="!auto" checked />
-                <label for="huey">Detect automatically</label>
+            <h2>Settings</h2>
+
+            <div class="settings-item" id="settingsItem_lang">
+                <h3>Language</h3>
+                <p class="desc">Select the language for the video title replacement</p>
             </div>
-            <div>
-                <input type="radio" name="settings_lang" value="en" />
-                <label for="dewey">English</label>
-            </div>
-            <div>
-                <input type="radio" name="settings_lang" value="es" />
-                <label for="louie">Spanish</label>
-            </div>
-            <div>
-                <input type="radio" name="settings_lang" value="ua" />
-                <label for="louie">Ukrainian</label>
-            </div>
-            <div>
-                <input type="radio" name="settings_lang" value="ru" />
-                <label for="louie">Russian</label>
-            </div>
+
         </div>
+    </div>
 
+    <div class="footer">
+        <p>Created by <a href="https://ucrash.neocities.org" target="_blank" rel="noopener noreferrer">Ucrash ✨</a></p>
+        <p id="footerCreditsTranslations"></p>
     </div>
 </body>
-<script src="popup.ts"></script>
+<script src="popup.ts" type="module"></script>
 </html>

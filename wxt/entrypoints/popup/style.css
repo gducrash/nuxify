@@ -1,5 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Unbounded:wght@200..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: hsl(230, 100%, 93%);
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Unbounded', sans-serif;
+}
+
+.page {
+    background: hsl(248, 29%, 10%);
+    padding: 12px 32px;
+}
+
+.footer {
+    background: hsl(247, 29%, 18%);
+    color: hsl(235, 25%, 66%);
+    padding: 12px 32px;
+    padding-bottom: 24px;
+}
+
+h1 {
+    color: #fff;
+}
+
+h2 {
+    color: hsl(235, 25%, 78%);
+    margin-bottom: 10px;
+}
+
+a {
+    color: hsl(204, 88%, 70%);
+}
+a:hover {
+    color: hsl(204, 88%, 90%);
+}
+
+.settings-item {
+    padding: 10px 0;
+    border-top: 1px solid hsla(236, 25%, 66%, 0.25);
+}
+
+.settings-item .desc {
+    color: hsl(235, 25%, 66%);
+    margin-bottom: 10px;
+}
+
+.settings-item > div {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.settings-item input[type=radio] {
+    margin-right: 4px;
 }

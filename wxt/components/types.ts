@@ -14,3 +14,8 @@ export type DictionaryData = {
 export type DictionaryMap = {
     [key in Language]: DictionaryData;
 }
+
+
+export type ExtensionSettings = {
+    lang: Language|'!auto',
+}

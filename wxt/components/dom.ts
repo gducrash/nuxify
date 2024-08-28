@@ -6,6 +6,7 @@ import thumbnailPath4 from '~/assets/media/thumb4.png';
 
 import { nuxifyString } from './nuxify';
 import { onElement } from './util';
+import type { ExtensionSettings } from './types';
 
 const thumbnailPaths = [
     thumbnailPath0,
@@ -15,9 +16,9 @@ const thumbnailPaths = [
     thumbnailPath4,
 ];
 
-function replaceVideo (titleElem: HTMLSpanElement, thumbnailElem?: Element|null) {
+function replaceVideo (titleElem: HTMLSpanElement, thumbnailElem?: Element|null, language?: Language) {
     // replace video card title
-    const { newTitle, isDifferent, seed } = nuxifyString(titleElem.innerText);
+    const { newTitle, isDifferent, seed } = nuxifyString(titleElem.innerText, language);
     if (!isDifferent) return;
     const titleElemText = titleElem.childNodes[0] as Text;
     titleElemText.data = newTitle;
@@ -40,7 +41,7 @@ function replaceVideo (titleElem: HTMLSpanElement, thumbnailElem?: Element|null)
     }
 }
 
-function setupCardsObserver () {
+function setupCardsObserver (language?: Language) {
     // react to dom tree updates
     // and update new video cards
     onElement('#video-title', elem => {
@@ -62,7 +63,7 @@ function setupCardsObserver () {
             titleElem = elem;
         }
 
-        replaceVideo(titleElem, thumbnailElem);
+        replaceVideo(titleElem, thumbnailElem, language);
     }, { 
         childList: true, 
         subtree: true, 
@@ -71,10 +72,10 @@ function setupCardsObserver () {
     });
 }
 
-function nuxifyHtmlElement (element?: Element|null) {
+function nuxifyHtmlElement (element?: Element|null, language?: Language) {
     if (element) {
         const titleElem = element as HTMLSpanElement;
-        const { newTitle, isDifferent } = nuxifyString(titleElem.innerText);
+        const { newTitle, isDifferent } = nuxifyString(titleElem.innerText, language);
         if (isDifferent) {
             const titleElemText = titleElem.childNodes[0] as Text;
             titleElemText.data = newTitle;
@@ -84,9 +85,13 @@ function nuxifyHtmlElement (element?: Element|null) {
 }
 
 
-export function setupObservers () {
+export function initNuxify (settings: ExtensionSettings) {
     
-    setupCardsObserver();
+    const lang = settings.lang === '!auto'
+        ? undefined
+        : settings.lang;
+
+    setupCardsObserver(lang);
 
     // i couldn't find a way to react to the main video title change
     // hence this ugly hacky setInterval solution
@@ -94,14 +99,14 @@ export function setupObservers () {
     setInterval(() => {
         // replace main video head title
         const titleElem = document.querySelector('ytd-watch-metadata #title h1 yt-formatted-string');
-        nuxifyHtmlElement(titleElem);
+        nuxifyHtmlElement(titleElem, lang);
 
         // replace main video miniplayer title
         const miniplayerTitleElem = document.querySelector('.miniplayer-title');
-        nuxifyHtmlElement(miniplayerTitleElem);
+        nuxifyHtmlElement(miniplayerTitleElem, lang);
 
         // replace document title (shown on the browser tab) 
-        const { newTitle, isDifferent } = nuxifyString(document.title);
+        const { newTitle, isDifferent } = nuxifyString(document.title, lang);
         if (isDifferent)
             document.title = newTitle;
     }, 500);

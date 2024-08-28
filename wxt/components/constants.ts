@@ -3,7 +3,7 @@ import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
 
-import type { DictionaryMap } from './types';
+import type { DictionaryMap, ExtensionSettings } from './types';
 
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
@@ -32,4 +32,9 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'Ucrash' ],
         nuxify: dictionary_ru,
     },
+}
+
+
+export const DEFAULT_SETTINGS: ExtensionSettings = {
+    lang: '!auto',
 }
