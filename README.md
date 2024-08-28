@@ -12,15 +12,4 @@ This extension is not tested... like, at all. Please use at your own risk, and r
 
 Contributions are very appreciated! Do submit issues and pull requests.
 
-- ## Español
-
-Esta extensión de navegador toma todos los videos de Youtube y remplaza las palabras del singular y primera persona a plural.
-
-No esperes compatibilidad con videos en inglés (No supe como hacerlo, lo siento #Herobrot).
-
-No dudes en hacer pull request para agregar más verbos y hacerlo más compatible ya que el español
-es una lengua muy difícil de memear la ptm.
-
-## [Autor original](https://github.com/gducrash)
-
-![Screenshot](https://cdn.discordapp.com/attachments/672132226099576832/1278193343460937768/image.png?ex=66cfe9d0&is=66ce9850&hm=3025ff256c185bc8c1c34e5ca4509eb624d536c326aa31313a0ab6ffc8cc44c5&)
+![Screenshot 1](https://cdn.discordapp.com/attachments/510776441084968977/1277666288604413963/IMG_20240826_180340_619.jpg?ex=66cdfef5&is=66ccad75&hm=717f99069b76a0374b81ae92626b1056fc5d333fc81479207c5f2b4ed85da102&)
