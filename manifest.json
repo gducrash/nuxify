@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Nuxify",
-  "version": "0.1.1",
+  "name": "NuxifySpanish",
+  "version": "0.1.1es",
   "description": "Takes every Youtube video starting with \"I\", replaces it with \"we\", and adds Nux Taku in the thumbnail. Now for Spanish!",
   "action": {
     "default_title": "Nuxify",
