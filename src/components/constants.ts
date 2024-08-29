@@ -37,4 +37,22 @@ export const DICTIONARY: DictionaryMap = {
 
 export const DEFAULT_SETTINGS: ExtensionSettings = {
     lang: '!auto',
+    
+    featureLiveDubbingEnabled: true,
+    featureLiveDubbingSidechainCompression: true,
+    featureLiveDubbingThud: true,
 }
+
+
+export const LIVE_DUBBING_TYPES = {
+    we: ['i'],
+    weare: ['i\'m', 'im', 'i\'ve', 'i\'ll', 'imma'],
+    our: ['my'],
+    ours: ['mine', 'mine\'s'],
+    ourselves: ['myself'],
+    us: ['me'],
+}
+
+export const LIVE_DUBBING_OFFSET_MS = -200;
+export const SIDECHAIN_COMPRESSION_ATTACK = 50;
+export const SIDECHAIN_COMPRESSION_RELEASE = 100;

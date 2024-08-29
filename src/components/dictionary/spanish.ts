@@ -67,15 +67,15 @@ export default function (videoTitle: string) {
 
         //Remplaza todas las terminaciones "ué" por "amos" que precedan con cualquier palabra/digito
         .replace(/\b\w{5,}UÉ/g, function(match){
-            console.log("ENTRE BRO")
-            console.log(match)
-            console.log(match.slice(0, -2) + 'AMOS')
+            ///// console.log("ENTRE BRO")
+            ///// console.log(match)
+            ///// console.log(match.slice(0, -2) + 'AMOS')
             return match.slice(0, -2) + 'AMOS';
         })
         .replace(/\b\w{5,}ué/gi, function(match){
-            console.log("entre bro")
-            console.log(match)
-            console.log(match.slice(0, -2) + 'amos')
+            ///// console.log("entre bro")
+            ///// console.log(match)
+            ///// console.log(match.slice(0, -2) + 'amos')
             return match.slice(0, -2) + 'amos';
         })
 

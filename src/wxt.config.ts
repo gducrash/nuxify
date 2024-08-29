@@ -5,7 +5,7 @@ export default defineConfig({
     manifestVersion: 3,
     manifest: {
         name: 'Nuxify',
-        version: '0.2.0',
+        version: '0.2.1',
         description: 'Takes every Youtube video starting with "I", replaces it with "we", and adds Nux Taku in the thumbnail',
         browser_specific_settings: {
             gecko: {
@@ -23,7 +23,8 @@ export default defineConfig({
                     "*://*.youtube.com/*"
                 ],
                 "resources": [
-                    "media/*"
+                    "media/*",
+                    "audio/*",
                 ]
             },
         ],

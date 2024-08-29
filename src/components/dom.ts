@@ -1,5 +1,5 @@
 import { nuxifyString } from './nuxify';
-import { onElement } from './util';
+import { setupLiveDubbing } from './liveDubbing';
 import type { ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
@@ -72,6 +72,8 @@ function nuxifyHtmlElement (element?: Element|null, language?: Language) {
 }
 
 
+
+
 export function initNuxify (settings: ExtensionSettings) {
     
     const lang = settings.lang === '!auto'
@@ -98,6 +100,10 @@ export function initNuxify (settings: ExtensionSettings) {
             document.title = newTitle;
     }, 500);
 
-    console.log("NUXIFYING");
+    console.log("[NUXIFY] NUXIFYING");
+
+
+    if (settings.featureLiveDubbingEnabled)
+        setupLiveDubbing(settings);
     
 }

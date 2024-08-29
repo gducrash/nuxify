@@ -4,6 +4,43 @@ import { getSettingsItem, updateSettings } from '@/components/util';
 import { DICTIONARY } from '@/components/constants';
 import type { Language } from '@/components/types';
 
+
+// live dubbing
+
+const settingsItemLiveDubbingEnabled              = document.getElementById('settingsItem_featureLiveDubbingEnabled') as HTMLInputElement;
+const settingsItemLiveDubbingSidechainCompression = document.getElementById('settingsItem_featureLiveDubbingSidechainCompression') as HTMLInputElement;
+const settingsItemLiveDubbingThud                 = document.getElementById('settingsItem_featureLiveDubbingThud') as HTMLInputElement;
+
+function updateLiveDubbingSettingsVisibility () {
+    if (settingsItemLiveDubbingEnabled.checked) {
+        settingsItemLiveDubbingSidechainCompression.disabled = false;
+        settingsItemLiveDubbingThud.disabled = false;
+
+        settingsItemLiveDubbingSidechainCompression.parentElement?.classList.remove('disabled');
+        settingsItemLiveDubbingThud.parentElement?.classList.remove('disabled');
+    } else {
+        settingsItemLiveDubbingSidechainCompression.disabled = true;
+        settingsItemLiveDubbingThud.disabled = true;
+
+        settingsItemLiveDubbingSidechainCompression.parentElement?.classList.add('disabled');
+        settingsItemLiveDubbingThud.parentElement?.classList.add('disabled');
+    }
+}
+
+settingsItemLiveDubbingEnabled.onchange = () => {
+    updateSettings('featureLiveDubbingEnabled', settingsItemLiveDubbingEnabled.checked);
+    updateLiveDubbingSettingsVisibility();
+}
+
+settingsItemLiveDubbingSidechainCompression.onchange = () => {
+    updateSettings('featureLiveDubbingSidechainCompression', settingsItemLiveDubbingSidechainCompression.checked);
+}
+settingsItemLiveDubbingThud.onchange = () => {
+    updateSettings('featureLiveDubbingThud', settingsItemLiveDubbingThud.checked);
+}
+
+
+
 // construct language settings html
 
 const settingsItemLangElem = document.getElementById('settingsItem_lang');
@@ -38,8 +75,15 @@ settingsLangOptions.forEach(lang => {
 
 getSettingsItem('lang').then(lang => {
     const elem = document.getElementById(`settings_lang_${lang}`) as HTMLInputElement;
-    console.log(elem, `settings_lang_${lang}`);
     elem.checked = true;
+});
+
+getSettings().then(settings => {
+    settingsItemLiveDubbingEnabled.checked = settings.featureLiveDubbingEnabled;
+    settingsItemLiveDubbingSidechainCompression.checked = settings.featureLiveDubbingSidechainCompression;
+    settingsItemLiveDubbingThud.checked = settings.featureLiveDubbingThud;
+
+    updateLiveDubbingSettingsVisibility();
 });
 
 
