@@ -1,15 +1,45 @@
 import { LIVE_DUBBING_OFFSET_MS } from './constants';
-import { getVideoLiveCaptions, getLiveDubbingType } from './util';
+import { getVideoLiveCaptions, getLiveDubbingType, playLiveDubbing, setupFadeCssAnim, setupNuxOverlay, getYtVideoId } from './util';
+import type { ExtensionSettings, YoutubeCaptionData } from './types';
 
-export async function setupLiveDubbing () {
+export async function setupLiveDubbing (settings: ExtensionSettings) {
+
+    // get the video data
     const video = document.querySelector('.html5-main-video') as HTMLVideoElement;
-    const query = new URLSearchParams(location.search);
-    const videoId = query.get('v');
-    if (!video || !videoId) return;
+    if (!video) return;
 
-    const captions = await getVideoLiveCaptions(videoId, true);
-    if (!captions.length) return;
-    const captionData = captions[0];
+    let videoId = getYtVideoId();
+    let captionData: YoutubeCaptionData|null = null;
+
+    // add nux taku overlay to main video
+    const videoContainer = video
+        ?.parentElement
+        ?.parentElement;
+
+    const nuxOverlayElem = setupNuxOverlay(videoContainer);
+    setupFadeCssAnim();
+
+    function mainOverlayFade () {
+        nuxOverlayElem.style.opacity = '1';
+        nuxOverlayElem.style.animation = '';
+        window.setTimeout(() => {
+            nuxOverlayElem.style.animation = 'nuxifyMainVideoFade 1s ease both';
+        }, 10);
+    }
+
+    async function refreshCaptionData () {
+        captionData = null;
+        if (videoId) {
+            // get the captions data
+            const captions = await getVideoLiveCaptions(videoId, true);
+            if (!captions?.length) return;
+            captionData = captions[0];
+        }
+        console.log("[NUXIFY] Captions replaced for video", videoId);
+    }
+
+    refreshCaptionData();
+
 
     let lastIndex = -1;
     let updateInterval: number|null = null;
@@ -25,11 +55,19 @@ export async function setupLiveDubbing () {
 
     video.onplay = () => startVideoUpdate();
     video.onpause = () => stopVideoUpdate();
+    video.onloadeddata = () => {
+        const newVideoId = getYtVideoId();
+        if (!newVideoId || newVideoId != videoId) {
+            videoId = newVideoId;
+            refreshCaptionData();
+        }
+    }
 
     startVideoUpdate();
 
     function handleVideoUpdate () {
-        if(video.paused) stopVideoUpdate();
+        if (video.paused) stopVideoUpdate();
+        if (!captionData) return;
 
         // get current video time
         const timeMs = video.currentTime * 1000 - LIVE_DUBBING_OFFSET_MS;
@@ -54,18 +92,33 @@ export async function setupLiveDubbing () {
         const currentIndex = currentCaptionEventIndex * 1000 + currentCaptionSegmentIndex;
 
         if (currentIndex != lastIndex && currentCaptionSegment) {
+            // debug
+            //// console.log(currentCaptionSegment.utf8);
+
+            // get caption duration
+            const nextCaptionSegment = currentCaptionSegments[currentCaptionSegmentIndex+1];
+            let currentCaptionDuration: number|undefined = nextCaptionSegment
+                ? nextCaptionSegment.tOffsetMs - currentCaptionSegment.tOffsetMs
+                : currentCaptionEvent.dDurationMs! - currentCaptionSegment.tOffsetMs;
+            if (isNaN(currentCaptionDuration)) currentCaptionDuration = undefined;
+
+            // play live dubbing
             const segmentType = getLiveDubbingType(currentCaptionSegment.utf8);
             if (segmentType) {
-                console.log(currentCaptionSegment?.utf8, currentIndex, video.volume, video.muted);
-                if (!video.muted) {
-                    video.muted = true
-                    setTimeout(() => video.muted = false, 200);
-                }
+                playLiveDubbing(
+                    segmentType,
+                    video,
+                    Math.min(currentCaptionDuration ?? 200, 500),
+                    settings.featureLiveDubbingSidechainCompression,
+                    settings.featureLiveDubbingThud,
+                );
+                mainOverlayFade();
             }
         }
 
         lastIndex = currentIndex;
     }
 
-    console.log("[NUXIFY] Live dubbing ready!")
+    console.log("[NUXIFY] Live dubbing ready!");
+
 }

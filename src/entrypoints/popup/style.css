@@ -36,8 +36,22 @@ h1 {
 
 h2 {
     color: hsl(235, 25%, 78%);
-    margin-bottom: 10px;
 }
+
+.flag-beta::after {
+    content: 'Experimental';
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    display: inline-block;
+    background: #49ffa1;
+    color: #000;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 8px;
+    transform: translateY(-3px);
+}
+
 
 a {
     color: hsl(204, 88%, 70%);
@@ -51,16 +65,30 @@ a:hover {
     border-top: 1px solid hsla(236, 25%, 66%, 0.25);
 }
 
-.settings-item .desc {
+.desc {
     color: hsl(235, 25%, 66%);
     margin-bottom: 10px;
+}
+
+.settings-item .hint {
+    color: hsl(235, 25%, 60%);
+    margin-bottom: 10px;
+    font-size: 12px;
 }
 
 .settings-item > div {
     font-size: 16px;
     margin-bottom: 4px;
 }
+.settings-item > div.section {
+    margin-bottom: 8px;
+}
 
 .settings-item input[type=radio] {
     margin-right: 4px;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

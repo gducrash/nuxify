@@ -104,6 +104,6 @@ export function initNuxify (settings: ExtensionSettings) {
 
 
     if (settings.featureLiveDubbingEnabled)
-        setupLiveDubbing();
+        setupLiveDubbing(settings);
     
 }

@@ -1,5 +1,6 @@
 import type { ExtensionSettings, Language, YoutubeCaptionData } from "./types";
-import { DICTIONARY, DEFAULT_SETTINGS, LIVE_DUBBING_TYPES } from "./constants";
+import type { PublicPath } from "wxt/browser";
+import { DICTIONARY, DEFAULT_SETTINGS, LIVE_DUBBING_TYPES, SIDECHAIN_COMPRESSION_ATTACK, SIDECHAIN_COMPRESSION_RELEASE } from "./constants";
 
 // used to generate a pseudo-random value for every title
 // so that the random thumbnails always match
@@ -96,6 +97,76 @@ export function getLiveDubbingType (seg: string): keyof typeof LIVE_DUBBING_TYPE
     });
     return targetType as keyof typeof LIVE_DUBBING_TYPES;
 }
+
+export function playAudio (file: string, volume: number = 1) {
+    const audioElem = document.createElement('audio');
+    audioElem.src = browser.runtime.getURL(`audio/${file}` as PublicPath);
+    audioElem.volume = volume;
+    audioElem.play();
+    audioElem.onended = () =>
+    audioElem.parentElement?.removeChild(audioElem);
+}
+
+export function playLiveDubbing (
+    type: keyof typeof LIVE_DUBBING_TYPES,
+    videoElem: HTMLVideoElement,
+    duration: number = 200,
+    sideChainCompression: boolean = true,
+    thud: boolean = true,
+) {
+
+    if (!videoElem || videoElem.muted) return;
+
+    playAudio(`${type}.wav`, videoElem.volume * 0.7);
+    if (thud)
+        playAudio(`sfxThud.wav`, videoElem.volume);
+
+    if (sideChainCompression) {
+        setTimeout(() => videoElem.muted = true, SIDECHAIN_COMPRESSION_ATTACK);
+        setTimeout(() => videoElem.muted = false, duration + SIDECHAIN_COMPRESSION_RELEASE);
+    }
+
+}
+
+export function setupFadeCssAnim () {
+    const style = document.createElement('style');
+    const keyframes = `
+    @keyframes nuxifyMainVideoFade {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }`;
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+}
+
+export function setupNuxOverlay (videoContainer?: HTMLElement|null) {
+    const nuxOverlayElem = document.createElement('img');
+    nuxOverlayElem.src = browser.runtime.getURL('/media/nux02.png');
+    nuxOverlayElem.className = 'nuxify-main-video-overlay';
+    nuxOverlayElem.style.position = 'absolute';
+    nuxOverlayElem.style.zIndex = '10';
+    nuxOverlayElem.style.bottom = '0';
+    nuxOverlayElem.style.right = '0';
+    nuxOverlayElem.style.width = '30%';
+    nuxOverlayElem.style.objectFit = 'contain';
+    nuxOverlayElem.style.pointerEvents = 'none';
+    nuxOverlayElem.style.opacity = '0';
+
+    videoContainer?.appendChild(nuxOverlayElem);
+    return nuxOverlayElem;
+}
+
+export function getYtVideoId () {
+    const query = new URLSearchParams(location.search);
+    const videoId = query.get('v');
+    return videoId;
+}
+
+
 
 export async function updateSettings <K extends keyof ExtensionSettings>(key: K, value: ExtensionSettings[K]) {
     const settings = await getSettings();

@@ -1,3 +1,12 @@
+export type ExtensionSettings = {
+    lang: Language|'!auto', // preffered language for title replacements. 
+                            // "!auto" = auto-detect based on document locale
+
+    featureLiveDubbingEnabled: boolean,              // enable live dubbing feature
+    featureLiveDubbingSidechainCompression: boolean; // enable live dubbing sidechain compression
+    featureLiveDubbingThud: boolean;                 // enable vine boom sound effect
+}
+
 export type Language =
     | 'en'
     | 'es'
@@ -13,14 +22,6 @@ export type DictionaryData = {
 
 export type DictionaryMap = {
     [key in Language]: DictionaryData;
-}
-
-
-export type ExtensionSettings = {
-    lang: Language|'!auto',             // preffered language for title replacements. 
-                                        // "!auto" = auto-detect based on document locale
-
-    featureLiveDubbingEnabled: boolean, // enable live dubbing feature
 }
 
 export type YoutubeCaptionData = {

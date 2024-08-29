@@ -23,7 +23,8 @@ export default defineConfig({
                     "*://*.youtube.com/*"
                 ],
                 "resources": [
-                    "media/*"
+                    "media/*",
+                    "audio/*",
                 ]
             },
         ],
