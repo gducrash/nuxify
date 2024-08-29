@@ -17,5 +17,22 @@ export type DictionaryMap = {
 
 
 export type ExtensionSettings = {
-    lang: Language|'!auto',
+    lang: Language|'!auto',             // preffered language for title replacements. 
+                                        // "!auto" = auto-detect based on document locale
+
+    featureLiveDubbingEnabled: boolean, // enable live dubbing feature
+}
+
+export type YoutubeCaptionData = {
+    events: {
+        aAppend: number,
+        dDurationMs?: number,
+        segs: {
+            utf8: string,
+            tOffsetMs?: number, 
+            acAsrConf?: number,
+        }[],
+        tStartMs: number,
+        wWinId: number,
+    }[],
 }
