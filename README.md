@@ -2,7 +2,7 @@
 
 ## Download links
 
-- ### [🟢 Chrome](https://chromewebstore.google.com/detail/nuxify/ooogdmlccimeanefkldmnfdeggmbfbkk) (v0.2.0)
+- ### [🟢 Chrome](https://chromewebstore.google.com/detail/nuxify/ooogdmlccimeanefkldmnfdeggmbfbkk) (v0.3.0)
 - ### [🦊 Firefox](https://addons.mozilla.org/en-US/firefox/addon/nuxify) (v0.3.0)
 - ### [📂 Manual download (.zip)](https://github.com/gducrash/nuxify/releases/latest) (v0.3.0)
 
