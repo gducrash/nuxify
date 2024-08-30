@@ -2,12 +2,12 @@ import dictionary_en from './dictionary/english';
 import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
-
+import dictionary_bg from './dictionary/bulgarian';
 import type { DictionaryMap, ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
 export const PRODUCT_VERSION = '0.3.2';
-
+//dont forget to actually write the language unlike the first person to do the "french" note with love by linux
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
 export const DICTIONARY: DictionaryMap = {
@@ -34,6 +34,12 @@ export const DICTIONARY: DictionaryMap = {
         languageNameLocalized: 'Русский',
         contributors: [ 'Ucrash' ],
         nuxify: dictionary_ru,
+    },
+    bg: {
+        languageName: 'Bulgarian',
+        languageNameLocalized: 'Bulgarian',
+        contributors: [ 'linux-helper' ],
+        nuxify: dictionary_bulgarian,
     },
 }
 
