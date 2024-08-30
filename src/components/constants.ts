@@ -2,6 +2,7 @@ import dictionary_en from './dictionary/english';
 import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
+import dictionary_fr from './dictionary/french';
 
 import type { DictionaryMap, ExtensionSettings } from './types';
 
@@ -32,6 +33,12 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'Ucrash' ],
         nuxify: dictionary_ru,
     },
+    fr: {
+        languageName: 'French',
+        languageNameLocalized: 'Français',
+        contributors: [ 'ivelter' ],
+        nuxify: dictionary_fr,
+    }
 }
 
 

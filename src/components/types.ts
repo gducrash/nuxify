@@ -11,7 +11,8 @@ export type Language =
     | 'en'
     | 'es'
     | 'uk'
-    | 'ru';
+    | 'ru'
+    | 'fr';
 
 export type DictionaryData = {
     languageName: string,
