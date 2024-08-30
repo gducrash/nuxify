@@ -40,6 +40,23 @@ settingsItemLiveDubbingThud.onchange = () => {
 }
 
 
+// Flags
+
+const settingsItemFlagEveryThumbnail   = document.getElementById('settingsItem_flagEveryThumbnail') as HTMLInputElement;
+const settingsItemFlagOnlyWtfThumbnail = document.getElementById('settingsItem_flagOnlyWtfThumbnail') as HTMLInputElement;
+const settingsItemFlagOnlyAffectCards  = document.getElementById('settingsItem_flagOnlyAffectCards') as HTMLInputElement;
+
+settingsItemFlagEveryThumbnail.onchange = () => {
+    updateSettings('flagEveryThumbnail', settingsItemFlagEveryThumbnail.checked);
+}
+settingsItemFlagOnlyWtfThumbnail.onchange = () => {
+    updateSettings('flagOnlyWtfThumbnail', settingsItemFlagOnlyWtfThumbnail.checked);
+}
+settingsItemFlagOnlyAffectCards.onchange = () => {
+    updateSettings('flagOnlyAffectCards', settingsItemFlagOnlyAffectCards.checked);
+}
+
+
 
 // construct language settings html
 
@@ -79,9 +96,13 @@ getSettingsItem('lang').then(lang => {
 });
 
 getSettings().then(settings => {
-    settingsItemLiveDubbingEnabled.checked = settings.featureLiveDubbingEnabled;
+    settingsItemLiveDubbingEnabled.checked              = settings.featureLiveDubbingEnabled;
     settingsItemLiveDubbingSidechainCompression.checked = settings.featureLiveDubbingSidechainCompression;
-    settingsItemLiveDubbingThud.checked = settings.featureLiveDubbingThud;
+    settingsItemLiveDubbingThud.checked                 = settings.featureLiveDubbingThud;
+
+    settingsItemFlagEveryThumbnail.checked   = settings.flagEveryThumbnail;
+    settingsItemFlagOnlyWtfThumbnail.checked = settings.flagOnlyWtfThumbnail;
+    settingsItemFlagOnlyAffectCards.checked  = settings.flagOnlyAffectCards;
 
     updateLiveDubbingSettingsVisibility();
 });
