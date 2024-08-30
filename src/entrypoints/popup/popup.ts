@@ -1,7 +1,7 @@
 import mediaNuxPic from '~/public/media/nux01.jpg';
 
 import { getSettingsItem, updateSettings } from '@/components/util';
-import { DICTIONARY } from '@/components/constants';
+import { CODE_CONTRIBUTORS, DICTIONARY, PRODUCT_VERSION } from '@/components/constants';
 import type { Language } from '@/components/types';
 
 
@@ -122,5 +122,14 @@ Object.values(DICTIONARY).forEach(data => {
     footerCreditsTranslationsElem?.appendChild(spanElem);
     footerCreditsTranslationsElem?.appendChild(brElem);
 });
+
+{
+    const spanElem = document.createElement('span');
+    spanElem.innerText = `Additional contributors: ${CODE_CONTRIBUTORS.join(', ')}`;
+    footerCreditsTranslationsElem?.appendChild(spanElem);
+}
+
+const footerVersionElem = document.getElementById('footerVersion') as HTMLParagraphElement;
+footerVersionElem.innerText = `v${PRODUCT_VERSION}`;
 
 (document.getElementById("the") as HTMLImageElement).src = mediaNuxPic;

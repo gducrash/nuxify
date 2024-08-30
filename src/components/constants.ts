@@ -6,6 +6,8 @@ import dictionary_ru from './dictionary/russian';
 import type { DictionaryMap, ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
+export const PRODUCT_VERSION = '0.3.2';
+
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
 export const DICTIONARY: DictionaryMap = {
@@ -34,6 +36,10 @@ export const DICTIONARY: DictionaryMap = {
         nuxify: dictionary_ru,
     },
 }
+
+export const CODE_CONTRIBUTORS = [
+    'Cappy Ishihara',
+];
 
 
 export const DEFAULT_SETTINGS: ExtensionSettings = {
