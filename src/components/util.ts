@@ -117,9 +117,9 @@ export function playLiveDubbing (
 
     if (!videoElem || videoElem.muted) return;
 
-    playAudio(`${type}.wav`, videoElem.volume * 0.7);
+    playAudio(`${type}.ogg`, videoElem.volume * 0.7);
     if (thud)
-        playAudio(`sfxThud.wav`, videoElem.volume);
+        playAudio(`sfxThud.ogg`, videoElem.volume);
 
     if (sideChainCompression) {
         setTimeout(() => videoElem.muted = true, SIDECHAIN_COMPRESSION_ATTACK);
