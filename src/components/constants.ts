@@ -7,9 +7,9 @@ import type { DictionaryMap, ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
 export const PRODUCT_VERSION = '0.3.2';
-//dont forget to actually write the language unlike the first person to do the "french" note with love by linux
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
+// also as a friendly note dont forget to write when sending a pull request to say what language it is in the title (just saying) 
 export const DICTIONARY: DictionaryMap = {
     en: {
         languageName: 'English',
