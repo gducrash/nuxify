@@ -2,14 +2,14 @@ import dictionary_en from './dictionary/english';
 import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
-
+import dictionary_bg from './dictionary/bulgarian';
 import type { DictionaryMap, ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
 export const PRODUCT_VERSION = '0.3.2';
-
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
+// also as a friendly note dont forget to write when sending a pull request to say what language it is in the title (just saying) 
 export const DICTIONARY: DictionaryMap = {
     en: {
         languageName: 'English',
@@ -34,6 +34,12 @@ export const DICTIONARY: DictionaryMap = {
         languageNameLocalized: 'Русский',
         contributors: [ 'Ucrash' ],
         nuxify: dictionary_ru,
+    },
+    bg: {
+        languageName: 'Bulgarian',
+        languageNameLocalized: 'Bulgarian',
+        contributors: [ 'linux-helper' ],
+        nuxify: dictionary_bulgarian,
     },
 }
 
