@@ -3,6 +3,7 @@ import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
 import dictionary_bg from './dictionary/bulgarian';
+
 import type { DictionaryMap, ExtensionSettings } from './types';
 import type { PublicPath } from 'wxt/browser';
 
@@ -37,9 +38,9 @@ export const DICTIONARY: DictionaryMap = {
     },
     bg: {
         languageName: 'Bulgarian',
-        languageNameLocalized: 'Bulgarian',
+        languageNameLocalized: 'Български',
         contributors: [ 'linux-helper' ],
-        nuxify: dictionary_bulgarian,
+        nuxify: dictionary_bg,
     },
 }
 
