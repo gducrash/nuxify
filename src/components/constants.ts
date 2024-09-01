@@ -3,11 +3,15 @@ import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
 import dictionary_fr from './dictionary/french';
+import dictionary_bg from './dictionary/bulgarian';
 
 import type { DictionaryMap, ExtensionSettings } from './types';
+import type { PublicPath } from 'wxt/browser';
 
+export const PRODUCT_VERSION = '0.3.3';
 // Update this, if you plan to add another language!
 // Also, update the "Language" type over in ./types.ts to include the id of your language
+// also as a friendly note dont forget to write when sending a pull request to say what language it is in the title (just saying) 
 export const DICTIONARY: DictionaryMap = {
     en: {
         languageName: 'English',
@@ -33,6 +37,12 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'Ucrash' ],
         nuxify: dictionary_ru,
     },
+    bg: {
+        languageName: 'Bulgarian',
+        languageNameLocalized: 'Български',
+        contributors: [ 'linux-helper' ],
+        nuxify: dictionary_bg,
+    },
     fr: {
         languageName: 'French',
         languageNameLocalized: 'Français',
@@ -41,6 +51,10 @@ export const DICTIONARY: DictionaryMap = {
     }
 }
 
+export const CODE_CONTRIBUTORS = [
+    'Cappy Ishihara',
+];
+
 
 export const DEFAULT_SETTINGS: ExtensionSettings = {
     lang: '!auto',
@@ -48,6 +62,10 @@ export const DEFAULT_SETTINGS: ExtensionSettings = {
     featureLiveDubbingEnabled: true,
     featureLiveDubbingSidechainCompression: true,
     featureLiveDubbingThud: true,
+
+    flagEveryThumbnail: false,
+    flagOnlyWtfThumbnail: false,
+    flagOnlyAffectCards: false, 
 }
 
 
@@ -63,3 +81,5 @@ export const LIVE_DUBBING_TYPES = {
 export const LIVE_DUBBING_OFFSET_MS = -200;
 export const SIDECHAIN_COMPRESSION_ATTACK = 50;
 export const SIDECHAIN_COMPRESSION_RELEASE = 100;
+
+export const WTF_THUMBNAIL_PATH: PublicPath = `/media/thumb3.png`;

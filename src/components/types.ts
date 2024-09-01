@@ -5,6 +5,10 @@ export type ExtensionSettings = {
     featureLiveDubbingEnabled: boolean,              // enable live dubbing feature
     featureLiveDubbingSidechainCompression: boolean; // enable live dubbing sidechain compression
     featureLiveDubbingThud: boolean;                 // enable vine boom sound effect
+
+    flagEveryThumbnail: boolean;   // put nux on every thumbnail
+    flagOnlyWtfThumbnail: boolean; // only use the "WTF?" thumbnail overlay
+    flagOnlyAffectCards: boolean;  // do not nuxify main video title and tab name
 }
 
 export type Language =
@@ -12,6 +16,7 @@ export type Language =
     | 'es'
     | 'uk'
     | 'ru'
+    | 'bg'
     | 'fr';
 
 export type DictionaryData = {

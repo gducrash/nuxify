@@ -1,7 +1,7 @@
 import mediaNuxPic from '~/public/media/nux01.jpg';
 
 import { getSettingsItem, updateSettings } from '@/components/util';
-import { DICTIONARY } from '@/components/constants';
+import { CODE_CONTRIBUTORS, DICTIONARY, PRODUCT_VERSION } from '@/components/constants';
 import type { Language } from '@/components/types';
 
 
@@ -37,6 +37,23 @@ settingsItemLiveDubbingSidechainCompression.onchange = () => {
 }
 settingsItemLiveDubbingThud.onchange = () => {
     updateSettings('featureLiveDubbingThud', settingsItemLiveDubbingThud.checked);
+}
+
+
+// Flags
+
+const settingsItemFlagEveryThumbnail   = document.getElementById('settingsItem_flagEveryThumbnail') as HTMLInputElement;
+const settingsItemFlagOnlyWtfThumbnail = document.getElementById('settingsItem_flagOnlyWtfThumbnail') as HTMLInputElement;
+const settingsItemFlagOnlyAffectCards  = document.getElementById('settingsItem_flagOnlyAffectCards') as HTMLInputElement;
+
+settingsItemFlagEveryThumbnail.onchange = () => {
+    updateSettings('flagEveryThumbnail', settingsItemFlagEveryThumbnail.checked);
+}
+settingsItemFlagOnlyWtfThumbnail.onchange = () => {
+    updateSettings('flagOnlyWtfThumbnail', settingsItemFlagOnlyWtfThumbnail.checked);
+}
+settingsItemFlagOnlyAffectCards.onchange = () => {
+    updateSettings('flagOnlyAffectCards', settingsItemFlagOnlyAffectCards.checked);
 }
 
 
@@ -79,9 +96,13 @@ getSettingsItem('lang').then(lang => {
 });
 
 getSettings().then(settings => {
-    settingsItemLiveDubbingEnabled.checked = settings.featureLiveDubbingEnabled;
+    settingsItemLiveDubbingEnabled.checked              = settings.featureLiveDubbingEnabled;
     settingsItemLiveDubbingSidechainCompression.checked = settings.featureLiveDubbingSidechainCompression;
-    settingsItemLiveDubbingThud.checked = settings.featureLiveDubbingThud;
+    settingsItemLiveDubbingThud.checked                 = settings.featureLiveDubbingThud;
+
+    settingsItemFlagEveryThumbnail.checked   = settings.flagEveryThumbnail;
+    settingsItemFlagOnlyWtfThumbnail.checked = settings.flagOnlyWtfThumbnail;
+    settingsItemFlagOnlyAffectCards.checked  = settings.flagOnlyAffectCards;
 
     updateLiveDubbingSettingsVisibility();
 });
@@ -101,5 +122,14 @@ Object.values(DICTIONARY).forEach(data => {
     footerCreditsTranslationsElem?.appendChild(spanElem);
     footerCreditsTranslationsElem?.appendChild(brElem);
 });
+
+{
+    const spanElem = document.createElement('span');
+    spanElem.innerText = `Additional contributors: ${CODE_CONTRIBUTORS.join(', ')}`;
+    footerCreditsTranslationsElem?.appendChild(spanElem);
+}
+
+const footerVersionElem = document.getElementById('footerVersion') as HTMLParagraphElement;
+footerVersionElem.innerText = `v${PRODUCT_VERSION}`;
 
 (document.getElementById("the") as HTMLImageElement).src = mediaNuxPic;
