@@ -25,6 +25,12 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'Herobrot' ],
         nuxify: dictionary_es,
     },
+    fr: {
+        languageName: 'French',
+        languageNameLocalized: 'Français',
+        contributors: [ 'ivelter' ],
+        nuxify: dictionary_fr,
+    },
     uk: {
         languageName: 'Ukrainian',
         languageNameLocalized: 'Українська',
@@ -43,12 +49,6 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'linux-helper' ],
         nuxify: dictionary_bg,
     },
-    fr: {
-        languageName: 'French',
-        languageNameLocalized: 'Français',
-        contributors: [ 'ivelter' ],
-        nuxify: dictionary_fr,
-    }
 }
 
 export const CODE_CONTRIBUTORS = [
