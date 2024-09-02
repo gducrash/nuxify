@@ -2,6 +2,7 @@ import dictionary_en from './dictionary/english';
 import dictionary_es from './dictionary/spanish';
 import dictionary_uk from './dictionary/ukrainian';
 import dictionary_ru from './dictionary/russian';
+import dictionary_fr from './dictionary/french';
 import dictionary_bg from './dictionary/bulgarian';
 
 import type { DictionaryMap, ExtensionSettings } from './types';
@@ -42,6 +43,12 @@ export const DICTIONARY: DictionaryMap = {
         contributors: [ 'linux-helper' ],
         nuxify: dictionary_bg,
     },
+    fr: {
+        languageName: 'French',
+        languageNameLocalized: 'Français',
+        contributors: [ 'ivelter' ],
+        nuxify: dictionary_fr,
+    }
 }
 
 export const CODE_CONTRIBUTORS = [
