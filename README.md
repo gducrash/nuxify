@@ -2,9 +2,9 @@
 
 ## Download links
 
-- ### [🟢 Chrome](https://chromewebstore.google.com/detail/nuxify/ooogdmlccimeanefkldmnfdeggmbfbkk) (v0.3.0)
-- ### [🦊 Firefox](https://addons.mozilla.org/en-US/firefox/addon/nuxify) (v0.3.0)
-- ### [📂 Manual download (.zip)](https://github.com/gducrash/nuxify/releases/latest) (v0.3.0)
+- ### [🟢 Chrome](https://chromewebstore.google.com/detail/nuxify/ooogdmlccimeanefkldmnfdeggmbfbkk) (v0.3.3)
+- ### [🦊 Firefox](https://addons.mozilla.org/en-US/firefox/addon/nuxify) (v0.3.3)
+- ### [📂 Manual download (.zip)](https://github.com/gducrash/nuxify/releases/latest) (v0.3.3)
 
 A browser extension, that takes every Youtube video starting with "I", replaces it with "we", and adds Nux Taku in the thumbnail. Also works with "me", "my", "mine", etc.
 
