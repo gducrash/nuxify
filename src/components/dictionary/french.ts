@@ -7,6 +7,11 @@ export default function (videoTitle: string, usedAsReference: boolean = false) {
         .replace(/\bJ'AI\b/g, 'NOUS AVONS')
         .replace(/\bj'ai\b/gi, 'nous avons')
 
+        // Je vous ai -> Nous vous avons
+        .replace(/\bJe vous ai\b/g, 'Nous vous avons')
+        .replace(/\bJE VOUS AI\b/g, 'NOUS VOUS AVONS')
+        .replace(/\bje vous ai\b/gi, 'nous vous avons')
+
         // Je suis -> Nous sommes
         .replace(/\bJe suis\b/g, 'Nous sommes')
         .replace(/\bJE SUIS\b/g, 'NOUS SOMMES')
@@ -65,6 +70,21 @@ export default function (videoTitle: string, usedAsReference: boolean = false) {
         .replace(/\bJE SIMULE\b/g, 'NOUS SIMULONS')
         .replace(/\bje simule\b/gi, 'nous simulons')
 
+        // Je montre -> Nous montrons
+        .replace(/\bJe montre\b/g, 'Nous montrons')
+        .replace(/\bJE MONTRE\b/g, 'NOUS MONTRONS')
+        .replace(/\bje montre\b/gi, 'nous montrons')
+
+        // Je vous montre -> Nous vous montrons
+        .replace(/\bJe vous montre\b/g, 'Nous vous montrons')
+        .replace(/\bJE VOUS MONTRE\b/g, 'NOUS VOUS MONTRONS')
+        .replace(/\bje vous montre\b/gi, 'nous vous montrons')
+
+        // Je réagis -> Nous réagissons
+        .replace(/\bJe réagis\b/g, 'Nous réagissons')
+        .replace(/\bJE RÉAGIS\b/g, 'NOUS RÉAGISSONS')
+        .replace(/\bje réagis\b/gi, 'nous réagissons')
+
         // Mon -> Notre
         .replace(/\bMon\b/g, 'Notre')
         .replace(/\bMON\b/g, 'NOTRE')
@@ -84,6 +104,11 @@ export default function (videoTitle: string, usedAsReference: boolean = false) {
         .replace(/\bMes\b/g, 'Nos')
         .replace(/\bMES\b/g, 'NOS')
         .replace(/\bmes\b/gi, 'nos')
+
+        // Me -> Nous
+        .replace(/\bMe\b/g, 'Nous')
+        .replace(/\bME\b/g, 'NOUS')
+        .replace(/\bme\b/gi, 'nous')
         
         // Moi-même => nous-mêmes
         .replace(/\bMoi-même\b/g, 'Nous-mêmes')
