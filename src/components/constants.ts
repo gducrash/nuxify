@@ -52,7 +52,7 @@ export const DICTIONARY: DictionaryMap = {
 }
 
 export const CODE_CONTRIBUTORS = [
-    'Cappy Ishihara',
+    'Cappy Ishihara', 'Chicken Jockey', 'Steve Minecraft',
 ];
 
 
